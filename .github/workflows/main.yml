@@ -9,7 +9,7 @@ jobs:
     runs-on: windows-latest
 
     env:
-      SigningCertificate: .\Platforms\StereoKit_UWP\StereoKit_UWP_TemporaryKey.pfx
+      SigningCertificate: StereoKit_UWP_TemporaryKey.pfx
       Solution_Path: StereoKitTemplate.sln
       UWP_Project_Path: .\Platforms\StereoKit_UWP\StereoKit_UWP.csproj
       UWP_Project_Directory: .\Platforms\StereoKit_UWP\
