@@ -36,7 +36,8 @@ namespace StereoKitApp
 
         public void Init()
         {
-            basebox = Model.FromFile("box.glb");
+            var mesh = Mesh.GenerateRoundedCube(Vec3.One * 0.1f, 0.02f);
+            basebox = new Model(mesh, Material.Default);
             boxData = new BoxData[3];
             boxData[0] = new BoxData
             {
@@ -79,7 +80,7 @@ namespace StereoKitApp
         {
             foreach (var node in boxData1.Model.Nodes)
             {
-                node.Material = Default.MaterialHand.Copy();
+                node.Material = Default.Material.Copy();
                 node.Material.Transparency = Transparency.Blend;
                 node.Material.SetColor("color", clr);
             }
