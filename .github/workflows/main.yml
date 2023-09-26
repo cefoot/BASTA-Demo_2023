@@ -71,6 +71,12 @@ jobs:
         AppxBundle: Always
         BuildMode: StoreUpload
         Configuration: Release
+      
+    - name: List Output Files 
+      run: tree /F C:\DeployOutput\
+      
+    - name: List Build Files 
+      run: tree /F $env:Solution_Path
 
     - name: Remove the .pfx
       run: Remove-Item -path $env:UWP_Project_Directory/$env:SigningCertificate
