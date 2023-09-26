@@ -32,7 +32,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Compile Include="..\..\**\*.cs" Exclude="..\..\obj\**;..\..\bin\**;..\..\Projects\**" />
+		<Compile Include="..\..\**\*.cs" Exclude="..\..\obj\**;..\..\bin\**;..\..\Projects\**;..\..\Platforms\StereoKit_UWP\**" />
 
 		<!--Don't compile .NET Core code in this project.-->
 		<Compile Remove="..\..\**\*.Net.cs" />

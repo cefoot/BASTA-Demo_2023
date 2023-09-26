@@ -15,6 +15,7 @@
 		<None Include="Platforms\Android\**" />
 
 		<Compile Remove="Projects\**" />
+		<Compile Remove="Platforms\StereoKit_UWP\**" />
 		<EmbeddedResource Remove="Projects\**" />
 		<None Remove="Projects\**" />
 	</ItemGroup>
