@@ -93,7 +93,7 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       with:
         files: |
-          C:\DeployOutput\StorePackage_*.zip
+          C:/DeployOutput/StorePackage_${{steps.getVersion.outputs.result}}.zip
 
 #    - name: Create release
 #      id: create_release
