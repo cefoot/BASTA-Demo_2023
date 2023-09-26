@@ -81,7 +81,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
-    <Compile Include="$(SolutionDir)\StereoApp.cs" />
+    <Compile Include="..\..\StereoApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
