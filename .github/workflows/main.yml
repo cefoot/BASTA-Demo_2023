@@ -86,7 +86,7 @@ jobs:
       run: Remove-Item -path $env:UWP_Project_Directory/$env:SigningCertificate
    
     - name: Create archive UWP
-      run: Compress-Archive -Path C:\DeployOutput\${{env:UWP_Project_Name}}_${{steps.getVersion.outputs.result}}_Test\* -DestinationPath C:\DeployOutput\HoloLensPackage_${{steps.getVersion.outputs.result}}.zip
+      run: Compress-Archive -Path C:\DeployOutput\$env:UWP_Project_Name_${{steps.getVersion.outputs.result}}_Test\* -DestinationPath C:\DeployOutput\HoloLensPackage_${{steps.getVersion.outputs.result}}.zip
    
     - name: Create archive Android
       run: Compress-Archive -Path C:\DeployOutput\publish\SKTemplate_Multi_Android\release\*.apk -DestinationPath C:\DeployOutput\AndroidPackage_${{steps.getVersion.outputs.result}}.zip
