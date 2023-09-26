@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace StereoKitApp
 {
-    public class App
+    public class StereoApp
     {
         public SKSettings Settings => new SKSettings
         {
