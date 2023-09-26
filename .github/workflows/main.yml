@@ -76,8 +76,8 @@ jobs:
     - name: Build Standalone & Android Package
       run: dotnet publish -c Release -o C:\DeployOutput
       
-    #- name: List Output Files 
-    #  run: tree /F C:\DeployOutput\
+    - name: List Output Files 
+      run: tree /F C:\DeployOutput\
       
     #- name: List Build Files 
     #  run: tree /F
