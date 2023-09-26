@@ -66,26 +66,26 @@ jobs:
         [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
         
     - name: Build the sideload solution
-      run: msbuild $env:Solution_Path /p:Platform=ARM64 /p:AppxBundle=$env:AppxBundle /p:AppxBundlePlatforms="ARM64" /p:AppxPackageDir=C:\DeployOutput /p:PackageCertificateKeyFile=$env:SigningCertificate /restore
+      run: msbuild $env:UWP_Project_Path /p:Platform=ARM64 /p:AppxBundle=$env:AppxBundle /p:AppxBundlePlatforms="ARM64" /p:AppxPackageDir=C:\DeployOutput /p:PackageCertificateKeyFile=$env:SigningCertificate /restore
       env:
         AppxBundle: Always
         BuildMode: StoreUpload
         Configuration: Release
       
-    - name: List Output Files 
-      run: tree /F C:\DeployOutput\
+    #- name: List Output Files 
+    #  run: tree /F C:\DeployOutput\
       
-    - name: List Build Files 
-      run: tree /F
+    #- name: List Build Files 
+    #  run: tree /F
 
     - name: Remove the .pfx
       run: Remove-Item -path $env:UWP_Project_Directory/$env:SigningCertificate
    
     - name: Create archive
-      run: Compress-Archive -Path C:\DeployOutput\* -DestinationPath C:\DeployOutput\StorePackage_${{steps.getVersion.outputs.result}}.zip
+      run: Compress-Archive -Path C:\DeployOutput\* -DestinationPath C:\DeployOutput\HoloLens_${{steps.getVersion.outputs.result}}.zip
       
-    - name: List Output Files 
-      run: tree /F C:\DeployOutput\
+    #- name: List Output Files 
+    #  run: tree /F C:\DeployOutput\
 
     - name: Release
       id: upload-to-release
@@ -93,27 +93,5 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       with:
         files: |
-          C:/DeployOutput/StorePackage_${{steps.getVersion.outputs.result}}.zip
-
-#    - name: Create release
-#      id: create_release
-#      uses: actions/create-release@v1
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#      with:
-#        tag_name: ${{ github.ref }}
-#        release_name: RC ${{steps.getVersion.outputs.result}}
-#        draft: false
-#        prerelease: false
-
-#    - name: Update release asset
-#      id: upload-release-asset
-#      uses: actions/upload-release-asset@v1
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#      with:
-#        upload_url: ${{ steps.create_release.outputs.upload_url }}
-#        asset_path: C:\DeployOutput\StorePackage_${{steps.getVersion.outputs.result}}.zip
-#        asset_name: StorePackage_${{steps.getVersion.outputs.result}}.zip
-#        asset_content_type: application/zip
+          C:/DeployOutput/HoloLens_${{steps.getVersion.outputs.result}}.zip
 
